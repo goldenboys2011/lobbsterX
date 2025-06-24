@@ -1,0 +1,1 @@
+pyinstaller --noconfirm --onefile --windowed --add-data "assets;assets" --add-data "internal;internal" --name LobbsterX browser.py

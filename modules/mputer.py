@@ -2,8 +2,10 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from PyQt6.QtCore import QUrl
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebChannel import QWebChannel
-from settingsBridge import SettingsBridge
-from tabs import load_internal_html
+from modules.resourcePath import resource_path
+from modules.settingsBridge import SettingsBridge
+from modules.tabs import load_internal_html
+
 
 class PuterWindow(QWidget):
     def __init__(self):
@@ -20,7 +22,7 @@ class PuterWindow(QWidget):
         html = load_internal_html("mputer", True)
 
         if html:
-            self.view.setHtml(html, QUrl("lobbster://mputer"))
+            self.view.setHtml(html, QUrl(resource_path("lobbster://mputer")))
         else:
             self.view.setHtml("""
                 <html>

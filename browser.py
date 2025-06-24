@@ -1,3 +1,4 @@
+import os
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow,
     QTabWidget,
@@ -7,10 +8,11 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QAction, QIcon
 import sys
 from PyQt6.QtWebChannel import QWebChannel
-from mputer import PuterWindow
-from settingsBridge import SettingsBridge
-import themes
-from tabs import BrowserTab
+from modules.mputer import PuterWindow
+from modules.resourcePath import resource_path
+from modules.settingsBridge import SettingsBridge
+import modules.themes as themes
+from modules.tabs import BrowserTab
 
 class Browser(QMainWindow):
     def __init__(self, initial_buss_url=None):
@@ -28,7 +30,7 @@ class Browser(QMainWindow):
         new_tab_button = QPushButton()
         new_tab_button.setFixedSize(25, 25)
 
-        icon = QIcon("assets/plus.png") 
+        icon = QIcon(resource_path("assets/plus.png"))
         new_tab_button.setIcon(icon)
         new_tab_button.setIconSize(QSize(20, 20)) 
         new_tab_button.clicked.connect(self.new_tab)
@@ -85,7 +87,7 @@ class Browser(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("assets/lobbesterRB.png"))
+    app.setWindowIcon(QIcon(resource_path("assets/lobbesterRB.png")))
 
     theme = SettingsBridge().getTheme()
 

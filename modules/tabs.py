@@ -6,17 +6,19 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtWebEngineCore import QWebEngineScript
 from PyQt6.QtWebChannel import QWebChannel
-from settingsBridge import SettingsBridge
+from modules.resourcePath import resource_path
+from modules.settingsBridge import SettingsBridge
 from PyQt6.QtCore import QUrl
 from urllib.parse import quote
 
 def load_internal_html(page_name, utf8 = False):
     try:
+        file_path = resource_path(os.path.join("internal/pages", f"{page_name}.html"))
         if utf8:
-            with open(os.path.join("internal/pages", f"{page_name}.html"), "r", encoding="utf-8") as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 return f.read()
         else:
-            with open(os.path.join("internal/pages", f"{page_name}.html"), "r") as f:
+            with open(file_path, "r") as f:
                 return f.read()
     except FileNotFoundError:
         return None

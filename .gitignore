@@ -2,3 +2,9 @@
 /__pycache__*
 /webx_export*
 /test
+/build
+/dist
+/LobbsterX.spec
+/setup.iss
+/modules/__pycache__*
+/installer
