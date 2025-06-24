@@ -178,7 +178,6 @@
 
   </style>
 
-    <!-- Highlight.js CDN (with GitHub-style theme) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
@@ -214,11 +213,9 @@
     if (sender === "bot") {
         msg.innerHTML = `<div class="bot-content">${marked.parse(text)}</div>`;
         
-        // Highlight only inside this new message
         msg.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightElement(block);
 
-        // Add copy button
         const button = document.createElement('button');
         button.className = 'copy-button';
         button.textContent = 'Copy';
@@ -802,7 +799,7 @@ Do not tell the user you have read the docs just continue like a normal chat
         const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "*No response*";
         addMessage(aiText, "bot");
 
-        conversationHistory.push({ role: "model", parts: [{ text: aiText }] }); // <-- Store AI response too
+        conversationHistory.push({ role: "model", parts: [{ text: aiText }] });
       } catch (e) {
         console.error(e);
         addMessage("Error: could not reach Gemini API.", "bot");

@@ -94,14 +94,13 @@ if __name__ == "__main__":
     else:
         app.setStyleSheet(themes.themeLight)
     
-    # Check for buss:// argument
     start_url = None
     if len(sys.argv) > 1:
         arg = sys.argv[1]
         if arg.startswith("buss://"):
             start_url = arg[7:]
         else:
-            start_url = arg  # fallback
+            start_url = arg 
     browser = Browser(initial_buss_url=start_url)
     browser.show()
     sys.exit(app.exec())

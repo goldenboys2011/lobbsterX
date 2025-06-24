@@ -9,8 +9,7 @@ class SettingsBridge(QObject):
 
     @pyqtSlot(result=str)
     def getTheme(self):
-        return self.settings.value("theme", "dark")  # default: "dark"
-
+        return self.settings.value("theme", "dark")
     @pyqtSlot(str)
     def setTheme(self, theme):
         print(f"Setting theme to: {theme}")
@@ -19,7 +18,7 @@ class SettingsBridge(QObject):
 
     @pyqtSlot(result=str)
     def getHomepage(self):
-        return self.settings.value("homepage", "search.app")  # default: "search.app"
+        return self.settings.value("homepage", "search.app")
 
     @pyqtSlot(str)
     def setHomepage(self, homepage):

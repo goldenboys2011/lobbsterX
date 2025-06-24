@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from PyQt6.QtCore import QUrl
-from PyQt6.QtWebEngineWidgets import QWebEngineView  # Ensure this import is included
+from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebChannel import QWebChannel
 from settingsBridge import SettingsBridge
 from tabs import load_internal_html
@@ -11,8 +11,7 @@ class PuterWindow(QWidget):
         self.setWindowTitle("Mputer (batman?)")
 
         layout = QVBoxLayout()
-        self.view = QWebEngineView()  # Initialize the web view
-
+        self.view = QWebEngineView()
         self.channel = QWebChannel()
         self.settingsBridge = SettingsBridge()
         self.channel.registerObject("settingsBridge", self.settingsBridge)
@@ -30,5 +29,5 @@ class PuterWindow(QWidget):
                 </html>
             """, QUrl("lobbster://mputer"))
 
-        layout.addWidget(self.view)  # Add the view to the layout
-        self.setLayout(layout)       # Set the layout for the window
+        layout.addWidget(self.view)
+        self.setLayout(layout) 

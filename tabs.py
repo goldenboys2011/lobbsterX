@@ -25,7 +25,7 @@ def load_internal_html(page_name, utf8 = False):
 class BrowserTab(QWidget):
     def __init__(self, buss_url: str = "search.app"):
         super().__init__()
-        self.devtools = None  # devtools view
+        self.devtools = None
         self.default_url = buss_url
         layout = QVBoxLayout(self)
         nav_bar = QHBoxLayout()
