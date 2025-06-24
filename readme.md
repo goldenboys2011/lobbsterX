@@ -13,6 +13,22 @@ LobbsterX. A small, lightweight browser for the WebX+ network written in python 
 - Settings! ``lobbster://settings``
 - AI assistant "Mputer" ``lobbster://mputer``
 
+## Settings
+
+|         | Description                             | Default        | Options        |
+|---------|-----------------------------------------|----------------|----------------|
+| Theme   | The Theme of the browser                | ``dark``       | ``light/dark`` |
+| New Tab | The page that will be used for new tabs | ``search.app`` | ``String``     |
+
+
+## Arguments
+
+|     | Description                         | Default | Type       | Example
+|-----|-------------------------------------|---------|------------|-----------
+| url | A ``url`` to start the browser with | `` ``   | ``String`` | ```lobbsterexe spot.music```
+
+
+
 ## Installetion :epic:
 
 ### Windows
