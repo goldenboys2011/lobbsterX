@@ -32,7 +32,7 @@ LobbsterX. A small, lightweight browser for the WebX+ network written in python 
 ## Installetion :epic:
 
 ### Windows
- Download the installer from [``downloads/windows/installer``](downloads/windows/installer)
+ Download the installer from [``MeDiAfIrE``](https://www.mediafire.com/file/cb3y4v2owmve2fc/Installer.exe/file)
 
 ### Linux
 Lol no. <img src="https://github.com/user-attachments/assets/0127ed88-9fa5-477a-8c1c-95e0dfdfd268" width="30" /> (not yet (need to build))
