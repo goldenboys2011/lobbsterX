@@ -1,0 +1,173 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>LobbsterX Settings</title>
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <style>
+    :root {
+      --lobster-accent: #FF4500; /* orange-red */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background 0.3s, color 0.3s;
+      background-color: var(--background);
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2em;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      background-color: var(--background-card);
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: var(--lobster-accent);
+      font-size: 2rem;
+      margin-bottom: 1em;
+    }
+
+    label {
+      display: block;
+      margin: 1em 0 0.5em;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 0.5em;
+      width: 100%;
+      border: 2px solid var(--lobster-accent);
+      border-radius: 10px;
+      font-size: 1rem;
+      background: var(--input-bg);
+      color: var(--text);
+    }
+
+    select {
+      padding: 0.5em;
+      width: 100%;
+      border: 2px solid var(--lobster-accent);
+      border-radius: 10px;
+      font-size: 1rem;
+      background: var(--input-bg);
+      color: var(--text);
+    }
+    button {
+      margin-top: 1.5em;
+      padding: 0.7em 1.5em;
+      font-size: 1rem;
+      background-color: var(--lobster-accent);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lobster Claw-like Background Shapes */
+    .claw-left, .claw-right {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: var(--lobster-accent);
+      border-radius: 50%;
+      opacity: var(--opacity);
+      z-index: 0;
+    }
+
+    .claw-left {
+      top: -100px;
+      left: -100px;
+    }
+
+    .claw-right {
+      bottom: -100px;
+      right: -100px;
+    }
+
+    /* Light Theme */
+    .light {
+      --background-card: #fafafa;
+      --background: #ffff
+      --text: #333;
+      --input-bg: #f9f9f9;
+      --opacity: 0.7
+    }
+
+    /* Dark Theme */
+    .dark {
+      --background-card: #1e1e1e;
+      --background: #242424;
+      --text: #eee;
+      --input-bg: #2b2b2b;
+      --opacity: 0.9
+    }
+  </style>
+
+  <script>
+    let settings;
+
+    new QWebChannel(qt.webChannelTransport, function(channel) {
+      settings = channel.objects.settingsBridge;
+
+      settings.getTheme().then(theme => {
+        document.getElementById("theme").value = theme;
+        applyTheme(theme);
+      });
+
+      settings.getHomepage().then(home => {
+        document.getElementById("homepage").value = home;
+      });
+    });
+
+    function applyTheme(theme) {
+      document.body.classList.remove("light", "dark");
+      document.body.classList.add(theme === "dark" ? "dark" : "light");
+    }
+
+    function saveSettings() {
+      const theme = document.getElementById("theme").value;
+      const homepage = document.getElementById("homepage").value;
+
+      settings.setTheme(theme);
+      settings.setHomepage(homepage);
+      applyTheme(theme);
+      alert("Settings saved!");
+    }
+  </script>
+</head>
+<body>
+  <div class="claw-left"></div>
+  <div class="claw-right"></div>
+  <div class="container">
+    <h1>🦞 LobbsterX Settings</h1>
+    <label for="theme">Theme:</label>
+    <select name="theme" id="theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+    </select>
+
+    <label for="homepage">Homepage:</label>
+    <input id="homepage" type="text" />
+
+    <button onclick="saveSettings()">Save</button>
+  </div>
+</body>
+</html>
